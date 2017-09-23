@@ -70,8 +70,7 @@ class ArtistController: UITableViewController, UISearchBarDelegate {
     
         do {
             var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
-            //print(readableJSON)
-            //print(readableJSON["data"])
+            
             if let data = readableJSON["data"] as? [JSONStandard]{
                 for i in 0..<data.count {
                     let item = data[i] as! JSONStandard
@@ -106,14 +105,11 @@ class ArtistController: UITableViewController, UISearchBarDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         if artists.count > 0{
-            //print(artistNames[indexPath.row])
             let label = cell?.viewWithTag(1) as! UILabel
             label.text = artists[indexPath.row].artistName
             
-            
             let artistimage = cell?.viewWithTag(2) as! UIImageView
             artistimage.image = artists[indexPath.row].image
-            //cell?.textLabel?.text = artistNames[indexPath.row]
             
         }
         

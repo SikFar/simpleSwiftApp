@@ -36,8 +36,6 @@ class TrackController: UITableViewController {
     
     override func viewDidLoad() {
         
-        print("22222222222222222222222222222222222222222222222222222222222222222222",tracklistURL)
-        
         backgroundImage.image = image
         albumImage.image = image
         
@@ -61,8 +59,7 @@ class TrackController: UITableViewController {
         
         do {
             var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
-            //print(readableJSON)
-            print(readableJSON["data"])
+            
             if let data = readableJSON["data"] as? [JSONStandard]{
                 for i in 0..<data.count {
                     let item = data[i] as! JSONStandard
@@ -72,7 +69,6 @@ class TrackController: UITableViewController {
                         let artist = artist["name"] as! String
                         let tracknr = item["track_position"] as! Int
                         let disknr = item["disk_number"] as! Int
-                        print(trackName, duration, artist)
                         
                         tracks.append(track.init(trackName : trackName, duration: duration, artist: artist, tracknr: tracknr, disknr: disknr))
                         

@@ -69,26 +69,19 @@ class AlbumController: UICollectionViewController {
         
         do {
             let readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
-            //print(readableJSON)
-            print(readableJSON["data"])
             
             if let data = readableJSON["data"] as? [JSONStandard]{
                 for i in 0..<data.count {
                     let item = data[i] as! JSONStandard
-                    //print(item)
                     if let artist = item["artist"] {
                         let artistName = artist["name"] as! String
                         let trackListURL = item["tracklist"] as! String
-                        //print(artistName)
                         let albumName = item["title"] as! String
-                        //print(albumName)
                         let albumCoverImageURL = URL(string: item["cover_xl"] as! String)
                         let albumCoverImageData = NSData(contentsOf: albumCoverImageURL!)
                         let albumCoverImage = UIImage(data: albumCoverImageData as! Data)
                         
                         
-                        //print(artistName)
-                        //artistNames.append(artistName)
                         albums.append(album.init(albumCover: albumCoverImage, albumName: albumName, artistName : artistName, tracklist: trackListURL))
                         
                         self.collectionView?.reloadData()
