@@ -1,4 +1,5 @@
 # simpleSwiftApp
+By Sikander Farooq
 
 # Description
 A simple app that uses the Deezer.com API, fetches data about an artist, their albums and the tracks, displays that data in different forms.
